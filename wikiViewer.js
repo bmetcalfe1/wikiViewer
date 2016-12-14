@@ -17,7 +17,7 @@ $(document).ready(function() {
       url: 'https://andruxnet-random-famous-quotes.p.mashape.com/cat=',
       success: function(response) {
         var r = JSON.parse(response);
-        console.log(r);
+        //console.log(r);
         currentQuote = r.quote;
         currentAuthor = r.author;
         $('#text').text(r.quote);
@@ -32,14 +32,26 @@ $(document).ready(function() {
   }
 
   function randomWiki() {
-    // var randomUrl = 'https://en.wikipedia.org/wiki/' + currentAuthor.trim().replace(/\s/g, '_');
     var randomUrl = 'https://en.wikipedia.org/wiki/Special:Random';
     openURL(randomUrl);
   }
 
-  getQuote();
+  function searchWiki(search) {
+    var userSearch = '';
+    userSearch += search.target.value;
+    console.log(userSearch);
+    var searchUrl = 'https://en.wikipedia.org/wiki/' + userSearch.trim().replace(/\s/g, '_');
+    console.log(userSearch);
+    openURL(searchUrl);
+  }
+
   $('#new-quote').on('click', getQuote);
   $('#quote-wiki').on('click', quoteWiki);
   $('#random-wiki').on('click', randomWiki);
+  $("#search-wiki").on('search', searchWiki);
+
+  // CALLS********//
+    getQuote();
+  //**************//
 
 });
