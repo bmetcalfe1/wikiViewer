@@ -1,0 +1,37 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Wikipedia Viewer</title>
+  <meta name="Brendan Metcalfe" content="Wikipedia Viewer">
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+	<div class="quote-box">
+		<div class="quote-text">
+			"<span id="text"></span>"
+		</div>
+		<div class="quote-author">- 
+			<span id="author"></span>
+		</div>
+		<h2></h2>
+		<div class="buttons">
+			<button class="button" id="new-quote">New Quote</button>
+			<button class="button" id="quote-wiki">Author Wiki</button>
+		</div>
+	</div>
+
+	<script src="wikiViewer.js"></script>
+
+</body>
+</html>
