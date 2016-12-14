@@ -3,28 +3,24 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 h1 {
 	padding-left: 2.5%;
 }
-
 .quote-box {
 	text-align: center;
 	padding-top: 25%;
 	padding-left: 15%;
 	padding-right: 15%;
 }
-
 .quote-text {
 	font-size: 40px;
 	font-weight: bold;
 }
-
 .quote-author {
 	font-size: 20px;
 	font-weight: normal;
 }
-
 .buttons {
-	padding: 2%;
+	font-size: 20px;
+	padding: 2.5%;
 }

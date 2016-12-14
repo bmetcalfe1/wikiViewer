@@ -10,7 +10,7 @@ $(document).ready(function() {
   function getQuote() {
     $.ajax({
       headers: {
-        "X-Mashape-Key":      "OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V",
+        "X-Mashape-Key": "OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V",
         Accept: "application/json",
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -31,9 +31,15 @@ $(document).ready(function() {
     openURL(quoteUrl);
   }
 
+  function randomWiki() {
+    // var randomUrl = 'https://en.wikipedia.org/wiki/' + currentAuthor.trim().replace(/\s/g, '_');
+    var randomUrl = 'https://en.wikipedia.org/wiki/Special:Random';
+    openURL(randomUrl);
+  }
 
   getQuote();
   $('#new-quote').on('click', getQuote);
   $('#quote-wiki').on('click', quoteWiki);
+  $('#random-wiki').on('click', randomWiki);
 
 });
