@@ -71,29 +71,33 @@ $(document).ready(function() {
         async: false,
         dataType: "jsonp",
         success: function (data) {
-          var pages = data.query.pages;
-          var titles = [];
-          var extracts = [];
-          var pageids = [];
-          for (var key in pages) {
-            titles.push(pages[key].title);
-            extracts.push(pages[key].extract);
-            pageids.push(pages[key].pageid);
+          if (data.query === undefined) {
+            swal("No results found!");
           }
-          var html = "";
-          for (i = 0; i < titles.length; i++) {
-            html += '<div class="search-entry">'
-            html += '<div class="search-title"><a href="https://en.wikipedia.org/?curid=';
-            html += pageids[i];
-            html += '">'
-            html += titles[i];
-            html += '</a></div><div class="search-body">';
-            html += extracts[i]
-            html += '</div>'
-            html += '</div>'
+          else {
+            var pages = data.query.pages;
+            var titles = [];
+            var extracts = [];
+            var pageids = [];
+            for (var key in pages) {
+              titles.push(pages[key].title);
+              extracts.push(pages[key].extract);
+              pageids.push(pages[key].pageid);
+            }
+            var html = "";
+            for (i = 0; i < titles.length; i++) {
+              html += '<div class="search-entry">'
+              html += '<div class="search-title"><a href="https://en.wikipedia.org/?curid=';
+              html += pageids[i];
+              html += '">'
+              html += titles[i];
+              html += '</a></div><div class="search-body">';
+              html += extracts[i]
+              html += '</div>'
+              html += '</div>'
+            }
+            $(".search-box").html(html);
           }
-          console.log(html);
-          $(".search-box").html(html);
         },
         error: function (errorMessage) {
             console.log(errorMessage);
