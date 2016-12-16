@@ -19,7 +19,7 @@ li {
 input {
 	border: none;
 	float: left;
-    font-size: 20px;
+    font-size: 22px;
     display: block;
     text-decoration: none;
 }
@@ -67,9 +67,6 @@ a {
 }
 .search-body {
 	font-size: 20px;
-}
-.search-error {
-	padding-top: 2%;
 }
 .search-error li {
 	font-size: 20px;
