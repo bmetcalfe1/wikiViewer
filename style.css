@@ -2,9 +2,35 @@ body{
     background-attachment:fixed;
     background-repeat: no-repeat;
     background-size: cover;
+    margin: 0;
 }
-h1 {
-	padding-left: 2.5%;
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+    font-size: 24px;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 2% 2%;
+    text-decoration: none;
+}
+input {
+	border: none;
+	float: left;
+    font-size: 24px;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+.button:hover {
+    background-color: #111;
 }
 .quote-box {
 	text-align: center;
@@ -19,8 +45,4 @@ h1 {
 .quote-author {
 	font-size: 20px;
 	font-weight: normal;
-}
-.buttons {
-	font-size: 20px;
-	padding: 2.5%;
 }
