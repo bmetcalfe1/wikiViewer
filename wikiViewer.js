@@ -74,9 +74,9 @@ $(document).ready(function() {
           var html = "";
           if (data.query === undefined) {
             // swal("No results found!");
-            html += "<div class='search-error'><p>Your search <span class='keyword'>" + userSearch + "</span> did not match any results.</p> <p>Suggestions:</p><li>Make sure that all words are spelled correctly.</li><li>Try different keywords.</li><li>Try more general keywords.</li></div>"
+            html += "<div class='search-error'><p>Your search <span class='keyword'>" + userSearch + "</span> did not match any results.</p> <p>Suggestions:</p><li>Make sure that all words are spelled correctly.</li><li>Try different keywords.</li><li>Try more general keywords.</li></div>";
           }
-          else {
+          else {            
             var pages = data.query.pages;
             var titles = [];
             var extracts = [];
@@ -97,7 +97,7 @@ $(document).ready(function() {
               html += '</div>'
               html += '</div>'
             }
-          }
+          } // else
           $(".search-box").html(html);
         },
         error: function (errorMessage) {
