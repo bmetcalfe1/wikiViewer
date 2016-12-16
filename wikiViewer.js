@@ -36,6 +36,15 @@ $(document).ready(function() {
     openURL(randomUrl);
   }
 
+  function getSearch() {
+    if ($('input').hasClass('hide')) {
+      $('input').removeClass('hide');
+    }
+    else {
+      $('input').addClass('hide');
+    }
+  }
+
   function searchWiki(search) {
     var userSearch = '';
     userSearch += search.target.value;
@@ -45,9 +54,10 @@ $(document).ready(function() {
     openURL(searchUrl);
   }
 
-  $('#new-quote').on('click', getQuote);
+  $('#random-quote').on('click', getQuote);
   $('#quote-wiki').on('click', quoteWiki);
   $('#random-wiki').on('click', randomWiki);
+  $('#microscope').on('click', getSearch);
   $("#search-wiki").on('search', searchWiki);
 
   // CALLS********//

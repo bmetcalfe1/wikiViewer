@@ -18,15 +18,14 @@
 
 <body>
 
-	<div class="buttons">
+	<nav class="buttons">
 		<ul>
-		  <li class="button" id="new-quote">New Quote</li>
-		  <li class="button" id="quote-wiki">Author Wiki</li>
+		  <li class="button" id="random-quote">Random Quote</li>
 		  <li class="button" id="random-wiki">Random Wiki</li>
 		  <li class="button"><i class="fa fa-search" id="microscope" aria-hidden="true"></i></li>
-		  <li><input class="" type="search" placeholder="Benjamin Franklin..." id="search-wiki"></li>
+		  <li><input class="hide" type="search" placeholder="Benjamin Franklin..." id="search-wiki"></li>
 		</ul>
-	</div>
+	</nav>
 
 	<div class="quote-box">
 		<div class="quote-text">
@@ -35,6 +34,17 @@
 		<div class="quote-author">- 
 			<span id="author"></span>
 		</div>
+		<div id="quote-wiki"><button>Author Wiki</button></div>
+		 <!-- add author wiki as button on quote page -->
+	</div>
+
+	<div class="search-box">
+		
+	</div>
+
+
+	<div class="random-box">
+		
 	</div>
 
 	<script src="wikiViewer.js"></script>
