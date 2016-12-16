@@ -45,14 +45,62 @@ $(document).ready(function() {
     }
   }
 
+  // function searchWiki(search) {
+  //   var userSearch = '';
+  //   userSearch += search.target.value;
+  //   console.log(userSearch);
+  //   var searchUrl = 'https://en.wikipedia.org/wiki/' + userSearch.trim().replace(/\s/g, '_');
+  //   console.log(userSearch);
+  //   openURL(searchUrl);
+  // }
+
   function searchWiki(search) {
+    if ( !($('.quote-box').hasClass('hide')) )  {
+      $('.quote-box').addClass('hide');
+    }
     var userSearch = '';
     userSearch += search.target.value;
-    console.log(userSearch);
-    var searchUrl = 'https://en.wikipedia.org/wiki/' + userSearch.trim().replace(/\s/g, '_');
-    console.log(userSearch);
-    openURL(searchUrl);
-  }
+    var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+    var cb = '&callback=JSON_CALLBACK';
+    var page = 'https://en.wikipedia.org/?curid=';
+
+    $.ajax({
+        type: "GET",
+        url: api + userSearch + cb,
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        dataType: "jsonp",
+        success: function (data) {
+          var pages = data.query.pages;
+          var titles = [];
+          var extracts = [];
+          var pageids = [];
+          for (var key in pages) {
+            titles.push(pages[key].title);
+            extracts.push(pages[key].extract);
+            pageids.push(pages[key].pageid);
+          }
+          var html = "";
+          for (i = 0; i < titles.length; i++) {
+            html += '<div class="search-entry">'
+            html += '<div class="search-title"><a href="https://en.wikipedia.org/?curid=';
+            html += pageids[i];
+            html += '">'
+            html += titles[i];
+            html += '</a></div><div class="search-body">';
+            html += extracts[i]
+            html += '</div>'
+            html += '</div>'
+          }
+          console.log(html);
+          $(".search-box").html(html);
+        },
+        error: function (errorMessage) {
+            console.log(errorMessage);
+        }
+    });
+
+  } //searchWiki function
 
   $('#random-quote').on('click', getQuote);
   $('#quote-wiki').on('click', quoteWiki);

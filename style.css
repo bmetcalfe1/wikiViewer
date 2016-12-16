@@ -1,4 +1,4 @@
-body{
+body {
     background-attachment:fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9,33 +9,36 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
 }
 li {
     float: left;
-    font-size: 24px;
-    display: block;
-    color: white;
-    text-align: center;
     padding: 2% 2%;
+    font-size: 24px;
     text-decoration: none;
 }
 input {
 	border: none;
 	float: left;
-    font-size: 24px;
+    font-size: 20px;
     display: block;
     text-decoration: none;
 }
-.hide {
-	visibility: hidden;
+.buttons {
+    color: white;
+    text-align: center;
+
+    background-color: #333;
+}
+.button:hover {
+    background-color: #111;
 }
 #microscope {
 	color: white;
 	background-color: #333;
 }
-.button:hover {
-    background-color: #111;
+.hide {
+	/*visibility: hidden;*/
+	display: none;
 }
 .quote-box {
 	text-align: center;
@@ -47,7 +50,22 @@ input {
 	font-size: 40px;
 	font-weight: bold;
 }
-.quote-author {
+.search-box {
+	text-align: center;
+	padding-left: 10%;
+	padding-right: 10%;
+}
+.search-entry {
+	padding: 2%;
+}
+.search-title {
+	font-size: 30px;
+	font-weight: bold;
+}
+a {
+	color: black;
+	text-decoration: none;
+}
+.search-body {
 	font-size: 20px;
-	font-weight: normal;
 }
