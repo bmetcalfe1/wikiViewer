@@ -51,7 +51,6 @@ input {
 	font-weight: bold;
 }
 .search-box {
-	text-align: center;
 	padding-left: 10%;
 	padding-right: 10%;
 }
@@ -68,4 +67,13 @@ a {
 }
 .search-body {
 	font-size: 20px;
+}
+.search-error {
+	padding-top: 2%;
+}
+.search-error li {
+	font-size: 20px;
+}
+.keyword {
+	font-weight: bold;
 }

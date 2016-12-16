@@ -71,8 +71,10 @@ $(document).ready(function() {
         async: false,
         dataType: "jsonp",
         success: function (data) {
+          var html = "";
           if (data.query === undefined) {
-            swal("No results found!");
+            // swal("No results found!");
+            html += "<div class='search-error'><p>Your search <span class='keyword'>" + userSearch + "</span> did not match any results.</p> <p>Suggestions:</p><li>Make sure that all words are spelled correctly.</li><li>Try different keywords.</li><li>Try more general keywords.</li></div>"
           }
           else {
             var pages = data.query.pages;
@@ -84,7 +86,6 @@ $(document).ready(function() {
               extracts.push(pages[key].extract);
               pageids.push(pages[key].pageid);
             }
-            var html = "";
             for (i = 0; i < titles.length; i++) {
               html += '<div class="search-entry">'
               html += '<div class="search-title"><a href="https://en.wikipedia.org/?curid=';
@@ -96,8 +97,8 @@ $(document).ready(function() {
               html += '</div>'
               html += '</div>'
             }
-            $(".search-box").html(html);
           }
+          $(".search-box").html(html);
         },
         error: function (errorMessage) {
             console.log(errorMessage);
