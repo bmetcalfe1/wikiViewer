@@ -8,6 +8,13 @@ $(document).ready(function() {
   }
 
   function getQuote() {
+    console.log("going..");
+    if ( !($('.search-box').hasClass('hide')) )  {
+      $('.search-box').addClass('hide');
+    }
+    if ($('.quote-box').hasClass('hide'))  {
+      $('.quote-box').removeClass('hide');
+    }
     $.ajax({
       headers: {
         "X-Mashape-Key": "OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V",
@@ -55,8 +62,11 @@ $(document).ready(function() {
   // }
 
   function searchWiki(search) {
-    if ( !($('.quote-box').hasClass('hide')) )  {
+    if ( !($('.quote-box').hasClass('hide')) ) {
       $('.quote-box').addClass('hide');
+    }
+    if ($('.search-box').hasClass('hide')) {
+      $('.search-box').removeClass('hide');
     }
     var userSearch = '';
     userSearch += search.target.value;
@@ -118,3 +128,8 @@ $(document).ready(function() {
   //**************//
 
 });
+
+// TO DO 
+// switch from search to random shows old for half second. 
+// iframe wiki view without escaping?
+// download/email pdfs?
