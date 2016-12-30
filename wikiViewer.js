@@ -111,7 +111,6 @@ $(document).ready(function() {
 
   function articleShow() {
 
-    console.log("yes!");
     if ( !($('.quote-box').hasClass('hide')) ) {
       $('.quote-box').addClass('hide');
     }
@@ -119,12 +118,14 @@ $(document).ready(function() {
       $('.search-box').addClass('hide');
     }
 
-    var clickedArticle;
-    var clickedArtUnderscore = "Benjamin_Franklin";
+    var clickedArticle = $(this).text();
+    console.log(clickedArticle);
+    var underscoreArticle = clickedArticle.replace(/ /g,"_");
+    console.log(underscoreArticle);
 
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + clickedArtUnderscore +  "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + underscoreArticle +  "&callback=?",
         contentType: "application/json; charset=utf-8",
         async: false,
         dataType: "json",
