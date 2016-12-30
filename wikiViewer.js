@@ -8,7 +8,6 @@ $(document).ready(function() {
   }
 
   function getQuote() {
-    console.log("going..");
     if ( !($('.search-box').hasClass('hide')) )  {
       $('.search-box').addClass('hide');
     }
@@ -52,15 +51,6 @@ $(document).ready(function() {
     }
   }
 
-  // function searchWiki(search) {
-  //   var userSearch = '';
-  //   userSearch += search.target.value;
-  //   console.log(userSearch);
-  //   var searchUrl = 'https://en.wikipedia.org/wiki/' + userSearch.trim().replace(/\s/g, '_');
-  //   console.log(userSearch);
-  //   openURL(searchUrl);
-  // }
-
   function searchWiki(search) {
     if ( !($('.quote-box').hasClass('hide')) ) {
       $('.quote-box').addClass('hide');
@@ -98,8 +88,8 @@ $(document).ready(function() {
             }
             for (i = 0; i < titles.length; i++) {
               html += '<div class="search-entry">'
-              html += '<div class="search-title"><a href="https://en.wikipedia.org/?curid=';
-              html += pageids[i];
+              html += '<div class="search-title"><a href="';
+              // html += pageids[i];
               html += '">'
               html += titles[i];
               html += '</a></div><div class="search-body">';
@@ -117,11 +107,18 @@ $(document).ready(function() {
 
   } //searchWiki function
 
+  function articleShow () {
+    if ( !($('.search-box').hasClass('hide')) )  {
+      $('.search-box').addClass('hide');
+    }
+  }
+
   $('#random-quote').on('click', getQuote);
   $('#quote-wiki').on('click', quoteWiki);
   $('#random-wiki').on('click', randomWiki);
   $('#microscope').on('click', getSearch);
   $("#search-wiki").on('search', searchWiki);
+  $(".search-title").on('click', articleShow);
 
   // CALLS********//
     getQuote();
