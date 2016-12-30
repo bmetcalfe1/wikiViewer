@@ -3,6 +3,10 @@ $(document).ready(function() {
   var currentQuote = '';
   var currentAuthor = '';
 
+  if (!($('.quote-box').hasClass('hide')) )  {
+    $('.quote-box').addClass('hide');
+  }
+
   function openURL(url){
     window.open(url);
   }
@@ -14,6 +18,7 @@ $(document).ready(function() {
     if ($('.quote-box').hasClass('hide'))  {
       $('.quote-box').removeClass('hide');
     }
+    console.log("yes!");
     $.ajax({
       headers: {
         "X-Mashape-Key": "OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V",
@@ -88,7 +93,7 @@ $(document).ready(function() {
             }
             for (i = 0; i < titles.length; i++) {
               html += '<div class="search-entry">'
-              html += '<div class="search-title"><a href="';
+              html += '<div class="search-title"><a class="search-link" href="';
               // html += pageids[i];
               html += '">'
               html += titles[i];
@@ -108,9 +113,17 @@ $(document).ready(function() {
   } //searchWiki function
 
   function articleShow () {
+
+    console.log("yes!");
+    if ( !($('.quote-box').hasClass('hide')) ) {
+      $('.quote-box').addClass('hide');
+    }
+    console.log("yes!");
     if ( !($('.search-box').hasClass('hide')) )  {
       $('.search-box').addClass('hide');
     }
+    console.log("yes!");
+    
   }
 
   $('#random-quote').on('click', getQuote);
@@ -118,10 +131,10 @@ $(document).ready(function() {
   $('#random-wiki').on('click', randomWiki);
   $('#microscope').on('click', getSearch);
   $("#search-wiki").on('search', searchWiki);
-  $(".search-title").on('click', articleShow);
+  $(".search-link").on('click', articleShow);
 
   // CALLS********//
-    getQuote();
+    // getQuote();
   //**************//
 
 });
