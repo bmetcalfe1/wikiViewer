@@ -119,13 +119,11 @@ $(document).ready(function() {
     }
 
     var clickedArticle = $(this).text();
-    console.log(clickedArticle);
     var underscoreArticle = clickedArticle.replace(/ /g,"_");
-    console.log(underscoreArticle);
 
     $.ajax({
         type: "GET",
-        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + underscoreArticle +  "&callback=?",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&page=" + underscoreArticle +  "&callback=?",
         contentType: "application/json; charset=utf-8",
         async: false,
         dataType: "json",
@@ -149,13 +147,8 @@ $(document).ready(function() {
   $("#search-wiki").on('search', searchWiki);
   $(document).on("click",".search-title", articleShow);
 
-  // CALLS********//
-    // getQuote();
-  //**************//
-
 });
 
 // TO DO 
 // switch from search to random shows old for half second. 
-// iframe wiki view without escaping?
 // download/email pdfs?
