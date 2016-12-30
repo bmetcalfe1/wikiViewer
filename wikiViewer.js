@@ -18,7 +18,6 @@ $(document).ready(function() {
     if ($('.quote-box').hasClass('hide'))  {
       $('.quote-box').removeClass('hide');
     }
-    console.log("yes!");
     $.ajax({
       headers: {
         "X-Mashape-Key": "OivH71yd3tmshl9YKzFH7BTzBVRQp1RaKLajsnafgL2aPsfP9V",
@@ -93,17 +92,15 @@ $(document).ready(function() {
             }
             for (i = 0; i < titles.length; i++) {
               html += '<div class="search-entry">'
-              html += '<div class="search-title"><a class="search-link" href="';
-              // html += pageids[i];
-              html += '">'
+              html += '<div class="search-title">';
               html += titles[i];
-              html += '</a></div><div class="search-body">';
+              html += '</div><div class="search-body">';
               html += extracts[i]
               html += '</div>'
               html += '</div>'
             }
           } // else
-          $(".search-box").html(html);
+          $('.search-box').html(html);
         },
         error: function (errorMessage) {
             console.log(errorMessage);
@@ -112,18 +109,36 @@ $(document).ready(function() {
 
   } //searchWiki function
 
-  function articleShow () {
+  function articleShow() {
 
     console.log("yes!");
     if ( !($('.quote-box').hasClass('hide')) ) {
       $('.quote-box').addClass('hide');
     }
-    console.log("yes!");
     if ( !($('.search-box').hasClass('hide')) )  {
       $('.search-box').addClass('hide');
     }
-    console.log("yes!");
-    
+
+    var clickedArticle;
+    var clickedArtUnderscore = "Benjamin_Franklin";
+
+    $.ajax({
+        type: "GET",
+        url: "http://en.wikipedia.org/w/api.php?action=parse&format=json&prop=text&section=0&page=" + clickedArtUnderscore +  "&callback=?",
+        contentType: "application/json; charset=utf-8",
+        async: false,
+        dataType: "json",
+        success: function (data, textStatus, jqXHR) {
+
+            var markup = data.parse.text["*"];
+            var blurb = $('<div></div>').html(markup);
+            $('.article-box').html($(blurb).find('p'));
+
+        },
+        error: function (errorMessage) {
+        }
+    });
+
   }
 
   $('#random-quote').on('click', getQuote);
@@ -131,7 +146,7 @@ $(document).ready(function() {
   $('#random-wiki').on('click', randomWiki);
   $('#microscope').on('click', getSearch);
   $("#search-wiki").on('search', searchWiki);
-  $(".search-link").on('click', articleShow);
+  $(document).on("click",".search-title", articleShow);
 
   // CALLS********//
     // getQuote();
