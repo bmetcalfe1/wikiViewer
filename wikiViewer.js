@@ -63,6 +63,9 @@ $(document).ready(function() {
     if ($('.search-box').hasClass('hide')) {
       $('.search-box').removeClass('hide');
     }
+    if ( !($('.article-box').hasClass('hide')) ) {
+      $('.article-box').addClass('hide');
+    }
     var userSearch = '';
     userSearch += search.target.value;
     var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
@@ -100,6 +103,9 @@ $(document).ready(function() {
             }
           } // else
           $('.search-box').html(html);
+          if ( !($('.article-box').hasClass('hide')) ) {
+            $('.article-box').addClass('hide');
+          }
         },
         error: function (errorMessage) {
           console.log(errorMessage);
@@ -113,6 +119,9 @@ $(document).ready(function() {
     }
     if ( !($('.search-box').hasClass('hide')) )  {
       $('.search-box').addClass('hide');
+    }
+    if ($('.article-box').hasClass('hide')) {
+      $('.article-box').removeClass('hide');
     }
     var clickedArticle = $(this).text();
     var underscoreArticle = clickedArticle.replace(/ /g,"_");
@@ -144,6 +153,7 @@ $(document).ready(function() {
 }); //doc ready
 
 // TO DO 
+// eorror message if no article returned - do article by page id number instead of name to reduce errors?
 // embed random wiki
 // remove a href's in articles
 // switch from search to random shows old for half second. 
